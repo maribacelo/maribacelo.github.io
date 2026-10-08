@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import MobileNav from '../components/react/MobileNav';
+import ImageLightbox from '../components/react/ImageLightbox';
+import LegacyDecks from '../components/react/LegacyDecks';
+import type { SeoProps } from '../types/site';
+import { mainNav } from '../data/site';
+import { assetPath, withBase } from '../lib/paths';
+
+interface Props extends Partial<SeoProps> {
+  navCurrent?: 'work' | 'about' | 'experience' | 'contact' | 'none';
+  enhanceDecks?: boolean;
+}
+
+const { navCurrent = 'none', enhanceDecks = false, ...seo } = Astro.props;
+
+const links = mainNav(navCurrent).map((link) => ({
+  ...link,
+  href: link.external
+    ? assetPath(link.href.replace(/^\/assets\//, ''))
+    : withBase(link.href.replace(/^\//, '')),
+}));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO {...seo} />
+  </head>
+  <body id="top" class="overflow-x-hidden bg-paper text-ink antialiased">
+    <a class="skip" href="#main">Skip to content</a>
+    <MobileNav client:load links={links} wordmarkHref={withBase()} />
+    <slot />
+    <footer id="contact" class="site-footer">
+      <div class="footer-top mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+        <p class="eyebrow">LET’S CONNECT</p>
+        <h2>Good work starts<br />with a conversation<span>.</span></h2>
+        <a class="contact-link min-h-[44px]" href="mailto:marianabacelo00@gmail.com">
+          marianabacelo00@gmail.com <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="footer-bottom mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+        <span>Mariana Bacelo · Lisbon, Portugal</span>
+        <div>
+          <a
+            class="inline-flex min-h-[44px] items-center"
+            href="https://www.linkedin.com/in/mariana-bacelo/"
+            rel="noopener noreferrer"
+            target="_blank">LinkedIn ↗</a
+          >
+          <a
+            class="inline-flex min-h-[44px] items-center"
+            href={assetPath('mariana-bacelo-cv.pdf')}
+            rel="noopener noreferrer"
+            target="_blank">Download CV ↗</a
+          >
+          <a class="inline-flex min-h-[44px] items-center" href="#top">Back to top ↑</a>
+        </div>
+      </div>
+      <p class="confidential mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+        Selected project material is confidential. Please do not reproduce or redistribute it.
+      </p>
+    </footer>
+    <ImageLightbox client:load />
+    {enhanceDecks && <LegacyDecks client:visible />}
+  </body>
+</html>

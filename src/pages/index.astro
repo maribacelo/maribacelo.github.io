@@ -1,0 +1,278 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PerspectiveExplorer from '../components/react/PerspectiveExplorer';
+import {
+  additionalProject,
+  earlierExperience,
+  perspectives,
+  primaryExperience,
+  projects,
+} from '../data/site';
+import { assetPath, withBase } from '../lib/paths';
+
+import heroImage from '../assets/mariana-at-work.webp';
+import innovationImg from '../assets/innovation-processes.webp';
+import cxImg from '../assets/cx-journey.webp';
+import logisticsImg from '../assets/logistics-platform.webp';
+import expansionImg from '../assets/expansion-swot.webp';
+
+const coverMap = {
+  'innovation-services': innovationImg,
+  'customer-service-strategy': cxImg,
+  'global-logistics': logisticsImg,
+  'logistics-business-alignment': expansionImg,
+} as const;
+
+const perspectiveLinks = perspectives.map((item) => ({
+  ...item,
+  linkHref: withBase(item.linkHref.replace(/^\//, '')),
+}));
+---
+
+<BaseLayout navCurrent="work" canonicalPath="/">
+  <main id="main">
+    <section class="hero hero-v2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+      <div class="hero-top">
+        <div class="hero-title">
+          <p class="eyebrow">
+            <span class="status-dot"></span> MARIANA BACELO · SENIOR SERVICE DESIGNER
+          </p>
+          <h1>
+            Make sense<br />of complexity.<br /><em>Design what’s next.</em>
+          </h1>
+        </div>
+        <figure class="hero-photo">
+          <Image
+            src={heroImage}
+            alt="Mariana presenting during a collaborative session"
+            widths={[320, 480, 665, 960]}
+            sizes="(max-width: 768px) 100vw, 32vw"
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption>In the room. In the details.</figcaption>
+        </figure>
+      </div>
+      <div class="hero-support">
+        <div>
+          <p>
+            I connect <strong>research, business strategy and delivery</strong> to shape services
+            that work for people and organisations.
+          </p>
+          <a class="round-link min-h-[44px]" href="#work">
+            <span>Explore selected work</span>
+            <span aria-hidden="true" class="round-arrow">↓</span>
+          </a>
+        </div>
+        <div class="hero-status">
+          <p class="assignment-label"><span class="status-dot"></span> INDEPENDENT CONTRACTOR</p>
+          <p class="assignment-location">Based in Lisbon · Working internationally</p>
+          <div class="note-tags">
+            <span>Service strategy</span>
+            <span>Research &amp; discovery</span>
+            <span>Digital transformation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Current assignments" class="assignment-strip">
+      <span class="eyebrow">CURRENT ASSIGNMENTS</span>
+      <div>
+        <span class="assignment-client">AstraZeneca</span>
+        <span>Pharmaceutical R&amp;D · Service Design Consultant</span>
+      </div>
+      <div>
+        <span class="assignment-client">Instituto de Informática, I.P.</span>
+        <span>Portuguese Social Security · Service Design Consultant</span>
+      </div>
+      <a
+        class="inline-flex min-h-[44px] items-center"
+        aria-label="See my experience and strategic focus"
+        href="#track-record">View experience ↓</a
+      >
+    </section>
+
+    <section class="section work-section mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]" id="work">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECTED WORK / 01 to 04</p>
+          <h2>Different challenges.<br /><em>A connected approach.</em></h2>
+        </div>
+        <p>From the customer relationship to the operating model and the product that supports it.</p>
+      </div>
+      <div class="project-grid">
+        {
+          projects.map((project) => (
+            <article class="project-card">
+              <a
+                aria-label={project.ariaLabel}
+                class={`project-visual ${project.visualClass}`}
+                href={withBase(`work/${project.slug}/`)}
+              >
+                <span class="project-number">{project.number}</span>
+                <Image
+                  src={coverMap[project.slug as keyof typeof coverMap]}
+                  alt={project.imageAlt}
+                  widths={[320, 480, 720]}
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  format="webp"
+                  loading="lazy"
+                />
+                <span aria-hidden="true" class="open-case">
+                  ↗
+                </span>
+              </a>
+              <div class="project-meta">
+                <span>{project.client}</span>
+                <span>CASE {project.number}</span>
+              </div>
+              <h3>
+                <a href={withBase(`work/${project.slug}/`)}>{project.title}</a>
+              </h3>
+              <p class="project-label">{project.label}</p>
+            </article>
+          ))
+        }
+      </div>
+      <a class="additional-case min-h-[44px]" href={withBase(`work/${additionalProject.slug}/`)}>
+        <span class="eyebrow">{additionalProject.eyebrow}</span>
+        <div>
+          <h3>{additionalProject.title}</h3>
+          <p>{additionalProject.description}</p>
+        </div>
+        <span aria-hidden="true" class="round-arrow">↗</span>
+      </a>
+    </section>
+
+    <section
+      class="track-record section mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]"
+      id="track-record"
+    >
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPERIENCE &amp; STRATEGIC FOCUS</p>
+          <h2>Organisations.<br /><em>Focus. Contribution.</em></h2>
+        </div>
+        <div class="track-heading-note">
+          <p>Eight years across services, products and complex business environments.</p>
+          <a
+            class="text-link inline-flex min-h-[44px] items-center"
+            href={assetPath('mariana-bacelo-cv.pdf')}
+            rel="noopener noreferrer"
+            target="_blank">Full CV ↗</a
+          >
+        </div>
+      </div>
+      <div class="track-table-wrap overflow-x-auto">
+        <table class="track-table">
+          <caption class="sr-only">Organisations, strategic focus and contributions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Period</th>
+              <th scope="col">Organisation &amp; role</th>
+              <th scope="col">Strategic focus</th>
+              <th scope="col">My contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              primaryExperience.map((row) => (
+                <tr>
+                  <td data-label="Period">
+                    <span class="period">{row.period}</span>
+                  </td>
+                  <th data-label="Organisation" scope="row">
+                    <strong>{row.organisation}</strong>
+                    <span>{row.role}</span>
+                  </th>
+                  <td data-label="Strategic focus">
+                    <p>{row.focus}</p>
+                  </td>
+                  <td data-label="Contribution">
+                    <p>{row.contribution}</p>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <details class="earlier-experience">
+        <summary class="min-h-[44px]">Explore earlier experience <span aria-hidden="true">＋</span></summary>
+        <div class="track-table-wrap overflow-x-auto">
+          <table class="track-table">
+            <caption class="sr-only">Earlier organisations, strategic focus and contributions</caption>
+            <thead>
+              <tr>
+                <th scope="col">Period</th>
+                <th scope="col">Organisation &amp; role</th>
+                <th scope="col">Strategic focus</th>
+                <th scope="col">My contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                earlierExperience.map((row) => (
+                  <tr>
+                    <td data-label="Period">
+                      <span class="period">{row.period}</span>
+                    </td>
+                    <th data-label="Organisation" scope="row">
+                      <strong>{row.organisation}</strong>
+                      <span>{row.role}</span>
+                    </th>
+                    <td data-label="Strategic focus">
+                      <p>{row.focus}</p>
+                    </td>
+                    <td data-label="Contribution">
+                      <p>{row.contribution}</p>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="practice section" id="approach">
+      <div class="section-heading mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+        <div>
+          <p class="eyebrow">HOW I APPROACH THE WORK</p>
+          <h2>Start with the<br /><em>right question.</em></h2>
+        </div>
+        <p>Three connected perspectives. Explore the questions they help answer.</p>
+      </div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
+        <PerspectiveExplorer client:visible perspectives={perspectiveLinks} />
+      </div>
+    </section>
+
+    <section
+      class="about-preview section mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]"
+    >
+      <div>
+        <p class="eyebrow">ABOUT MARIANA</p>
+        <h2>Curious about people.<br /><em>Attentive to systems.</em></h2>
+      </div>
+      <div>
+        <p>
+          I’m a Senior Service Designer based in Lisbon, with a background spanning product design,
+          customer experience and service strategy.
+        </p>
+        <p>
+          My experience across industrial, public-sector and digital environments shapes how I work:
+          connect the evidence, bring different perspectives together and make the next decision
+          clearer.
+        </p>
+        <a class="text-link inline-flex min-h-[44px] items-center" href={withBase('about/')}>
+          A little more about me ↗
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

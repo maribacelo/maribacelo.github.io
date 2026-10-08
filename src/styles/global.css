@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "./portfolio.css";
+
+@theme {
+  --color-paper: #f6f4ed;
+  --color-ink: #1b352e;
+  --color-muted: #52625b;
+  --color-line: #cdd3c7;
+  --color-accent: #bc452d;
+  --color-green: #dfe7d3;
+  --font-sans: "Manrope", Arial, sans-serif;
+  --font-serif: "Instrument", Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply overflow-x-hidden bg-paper text-ink font-sans;
+  }
+}
+
+/* Mobile-first nav: hidden drawer on small screens, inline from md+ */
+.main-nav {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--paper, #f6f4ed);
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--line, #cdd3c7);
+  gap: 1.25rem;
+  box-shadow: 0 16px 20px #1b352e0d;
+  flex-wrap: wrap;
+}
+
+.main-nav.is-open {
+  display: flex;
+}
+
+.site-header {
+  position: relative;
+  border-bottom: 1px solid var(--line, #cdd3c7);
+}
+
+.menu-toggle {
+  display: inline-flex;
+  background: transparent;
+  border: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .main-nav,
+  .main-nav.is-open {
+    display: flex;
+    position: static;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+}
+
+.site-footer {
+  background: var(--ink, #1b352e);
+  color: var(--paper, #f6f4ed);
+  padding: 3.5rem 0 1.5rem;
+}
+
+/* Ensure interactive controls meet 44px touch target on small screens */
+@media (max-width: 767px) {
+  .deck-controls button,
+  .dialog-actions button,
+  .image-open > span,
+  .lens-button,
+  .menu-toggle,
+  .nav-contact {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .deck-controls button {
+    width: 44px;
+    height: 44px;
+  }
+}
