@@ -14,10 +14,13 @@ import { assetPath, withBase } from '../lib/paths';
 import heroImage from '../assets/mariana-at-work.webp';
 import innovationImg from '../assets/innovation-processes.webp';
 import logisticsImg from '../assets/logistics-platform.webp';
+import cxImg from '../assets/cx-journey.webp';
+import expansionImg from '../assets/expansion-swot.webp';
 
-const protectedCases = new Set(['customer-service-strategy', 'logistics-business-alignment']);
 const coverMap = {
   'innovation-services': innovationImg,
+  'customer-service-strategy': cxImg,
+  'logistics-business-alignment': expansionImg,
   'global-logistics': logisticsImg,
 } as const;
 
@@ -110,10 +113,7 @@ const perspectiveLinks = perspectives.map((item) => ({
                 href={withBase(`work/${project.slug}/`)}
               >
                 <span class="project-number">{project.number}</span>
-                {protectedCases.has(project.slug) ? (
-                  <div class="protected-card-copy"><small>Case access on request</small><span>{project.slug === 'customer-service-strategy' ? 'Customer relationships.' : 'Shared business direction.'}</span></div>
-                ) : (
-                  <Image
+                <Image
                   src={coverMap[project.slug as keyof typeof coverMap]}
                   alt={project.imageAlt}
                   widths={[320, 480, 720]}
@@ -121,7 +121,6 @@ const perspectiveLinks = perspectives.map((item) => ({
                   format="webp"
                   loading="lazy"
                 />
-                )}
                 <span aria-hidden="true" class="open-case">
                   ↗
                 </span>

@@ -281,6 +281,6 @@ Portfolio content © Mariana Bacelo. Source structure is provided for deployment
   <a href="#para-o-próximo-dev-pt-br"><img src="https://img.shields.io/badge/PT--BR-Resumo-2E7D32?style=for-the-badge&logo=googletranslate&logoColor=white" alt="PT-BR summary" /></a>
 </p>
 
-## Restricted case material
+## Case access
 
-Customer Service Strategy and Logistics Business Alignment are request-access teasers. Their full case pages, presentation media and cover images are omitted from the current public source and build. The protected service is separate and has not been activated here. Earlier public commits may still contain those materials; this change does not rewrite repository history.
+All five case studies and their project images are public, without passwords or request-access gates, as explicitly requested by the portfolio owner.
