@@ -45,6 +45,34 @@
 .site-header {
   position: relative;
   border-bottom: 1px solid var(--line, #cdd3c7);
+  background: var(--paper, #f6f4ed);
+  z-index: 100;
+}
+
+.site-header.is-floating {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 0);
+  transition: transform 180ms ease;
+  box-shadow: 0 4px 16px #1b352e0d;
+}
+
+.site-header.is-floating.is-hidden {
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+}
+
+.site-header.is-floating:has(:focus-visible) {
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header.is-floating {
+    transition: none;
+  }
 }
 
 .menu-toggle {
