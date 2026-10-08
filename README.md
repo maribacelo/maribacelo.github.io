@@ -25,7 +25,7 @@
 </p>
 
 <p align="center">
-  <a href="https://maribacelo.github.io/"><img src="https://img.shields.io/badge/🌐_Live_site-maribacelo.github.io-BC452D?style=for-the-badge" alt="Live site" /></a>
+  <a href="https://maribacelo.github.io/maribacelo/"><img src="https://img.shields.io/badge/🌐_Live_site-maribacelo.github.io/maribacelo-BC452D?style=for-the-badge" alt="Live site" /></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/🚀_Quick_start-0B1F3A?style=for-the-badge" alt="Quick start" /></a>
   <a href="#project-layout"><img src="https://img.shields.io/badge/📁_Layout-0B1F3A?style=for-the-badge" alt="Layout" /></a>
   <a href="#architecture"><img src="https://img.shields.io/badge/🏗️_Architecture-0B1F3A?style=for-the-badge" alt="Architecture" /></a>
@@ -58,7 +58,7 @@
 
 ## Product in one glance
 
-Personal portfolio for **Mariana Bacelo**, Senior Service Designer. It presents selected work, experience and contact paths as a **static site** hosted on [GitHub Pages](https://maribacelo.github.io/).
+Personal portfolio for **Mariana Bacelo**, Senior Service Designer. It presents selected work, experience and contact paths as a **static site** hosted on [GitHub Pages](https://maribacelo.github.io/maribacelo/).
 
 Built for the next developer to extend without fighting a one-off HTML dump:
 
@@ -218,12 +218,22 @@ Configured in [`astro.config.mjs`](./astro.config.mjs):
 
 | Option | Value | Notes |
 |---|---|---|
-| `site` | `https://maribacelo.github.io` | User/org Pages site |
-| `base` | `/` | Root of `*.github.io` |
+| `site` | `https://maribacelo.github.io` | GitHub Pages host |
+| `base` | `/maribacelo` | Project site URL prefix |
 | `output` | `static` | Pure SSG |
 | `trailingSlash` | `always` | Stable directory URLs |
 
-CI: [`.github/workflows/astro.yml`](./.github/workflows/astro.yml) builds on `main` and publishes the `dist/` artifact. The workflow may pass `--site` / `--base` from `configure-pages`; path helpers stay correct via `BASE_URL`.
+CI: [`.github/workflows/astro.yml`](./.github/workflows/astro.yml) builds on `main` (Node **22+**) and publishes the `dist/` artifact.
+
+### Required Pages setting (owner)
+
+The Astro workflow only deploys when Pages source is **GitHub Actions**.
+
+1. Open **Settings → Pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions** (not “Deploy from a branch”)
+3. Keep the workflow `Deploy Astro site to Pages`
+
+If Source stays on **Deploy from a branch**, GitHub runs the legacy **Jekyll** builder on the repo root and fails on `.astro` front matter (`Invalid YAML front matter in …/SEO.astro`).
 
 > **Content note:** Selected project material is confidential. `robots` currently defaults to `noindex,nofollow` until a public release is approved. A client-side gate is not access control — decide visibility before opening the repo or cases.
 
@@ -262,7 +272,7 @@ Breakpoints follow Tailwind defaults: `sm 640` · `md 768` · `lg 1024` · `xl 1
 
 Portfolio content © Mariana Bacelo. Source structure is provided for deployment and maintenance of this site.
 
-- Site: [maribacelo.github.io](https://maribacelo.github.io/)
+- Site: [maribacelo.github.io/maribacelo](https://maribacelo.github.io/maribacelo/)
 - Email: [marianabacelo00@gmail.com](mailto:marianabacelo00@gmail.com)
 - LinkedIn: [mariana-bacelo](https://www.linkedin.com/in/mariana-bacelo/)
 
