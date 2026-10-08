@@ -2,14 +2,14 @@
   "name": "Mariana Bacelo — Senior Service Designer",
   "short_name": "Mariana Bacelo",
   "description": "Service strategy, research and digital transformation portfolio.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f6f4ed",
   "theme_color": "#f6f4ed",
   "lang": "en",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
