@@ -36,9 +36,10 @@ const links = mainNav(navCurrent).map((link) => ({
       <div class="footer-top mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
         <p class="eyebrow">LET’S CONNECT</p>
         <h2>Good work starts<br />with a conversation<span>.</span></h2>
-        <a class="contact-link min-h-[44px]" href="mailto:marianabacelo00@gmail.com">
-          marianabacelo00@gmail.com <span aria-hidden="true">↗</span>
-        </a>
+        <div class="email-actions">
+          <button type="button" class="contact-link email-copy min-h-[44px]" data-copy-email="marianabacelo00@gmail.com" aria-label="Copy email address: marianabacelo00@gmail.com">marianabacelo00@gmail.com <span aria-hidden="true">Copy ↗</span></button>
+          <a class="compose-email inline-flex min-h-[44px] items-center" href="mailto:marianabacelo00@gmail.com">Open email app ↗</a>
+        </div>
       </div>
       <div class="footer-bottom mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]">
         <span>Mariana Bacelo · Lisbon, Portugal</span>
@@ -63,6 +64,8 @@ const links = mainNav(navCurrent).map((link) => ({
       </p>
     </footer>
     <ImageLightbox client:load />
-    {enhanceDecks && <LegacyDecks client:visible />}
+    {enhanceDecks && <LegacyDecks client:load />}
+    <div class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script is:inline defer src={withBase('portfolio-interactions.js')}></script>
   </body>
 </html>

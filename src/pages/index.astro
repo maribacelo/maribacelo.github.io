@@ -13,15 +13,12 @@ import { assetPath, withBase } from '../lib/paths';
 
 import heroImage from '../assets/mariana-at-work.webp';
 import innovationImg from '../assets/innovation-processes.webp';
-import cxImg from '../assets/cx-journey.webp';
 import logisticsImg from '../assets/logistics-platform.webp';
-import expansionImg from '../assets/expansion-swot.webp';
 
+const protectedCases = new Set(['customer-service-strategy', 'logistics-business-alignment']);
 const coverMap = {
   'innovation-services': innovationImg,
-  'customer-service-strategy': cxImg,
   'global-logistics': logisticsImg,
-  'logistics-business-alignment': expansionImg,
 } as const;
 
 const perspectiveLinks = perspectives.map((item) => ({
@@ -113,7 +110,10 @@ const perspectiveLinks = perspectives.map((item) => ({
                 href={withBase(`work/${project.slug}/`)}
               >
                 <span class="project-number">{project.number}</span>
-                <Image
+                {protectedCases.has(project.slug) ? (
+                  <div class="protected-card-copy"><small>Case access on request</small><span>{project.slug === 'customer-service-strategy' ? 'Customer relationships.' : 'Shared business direction.'}</span></div>
+                ) : (
+                  <Image
                   src={coverMap[project.slug as keyof typeof coverMap]}
                   alt={project.imageAlt}
                   widths={[320, 480, 720]}
@@ -121,6 +121,7 @@ const perspectiveLinks = perspectives.map((item) => ({
                   format="webp"
                   loading="lazy"
                 />
+                )}
                 <span aria-hidden="true" class="open-case">
                   ↗
                 </span>
@@ -146,6 +147,8 @@ const perspectiveLinks = perspectives.map((item) => ({
         <span aria-hidden="true" class="round-arrow">↗</span>
       </a>
     </section>
+
+    <section aria-label="Selected organisations" class="client-wall"><div class="client-wall-heading"><p class="eyebrow">SELECTED ORGANISATIONS</p><p>Experience across direct client and consulting engagements.</p></div><div class="client-logos"><div><img alt="AstraZeneca" loading="lazy" src={withBase('assets/logo-astrazeneca.png')}/></div><div class="government-mark" title="Instituto de Informática, I.P. / Portuguese Social Security"><img alt="República Portuguesa" loading="lazy" src={withBase('assets/logo-republica-portuguesa.svg')}/><span>Instituto de Informática, I.P.</span></div><div><img alt="Braskem" loading="lazy" src={withBase('assets/logo-braskem.webp')}/></div><div><img alt="Thomson Reuters" loading="lazy" src={withBase('assets/logo-thomson-reuters.webp')}/></div><div><img alt="Prudential" loading="lazy" src={withBase('assets/logo-prudential.webp')}/></div><div><img alt="BTG Pactual" loading="lazy" src={withBase('assets/logo-btg-pactual.webp')}/></div></div></section>
 
     <section
       class="track-record section mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1680px]"

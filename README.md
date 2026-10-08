@@ -25,7 +25,7 @@
 </p>
 
 <p align="center">
-  <a href="https://maribacelo.github.io/maribacelo/"><img src="https://img.shields.io/badge/🌐_Live_site-maribacelo.github.io/maribacelo-BC452D?style=for-the-badge" alt="Live site" /></a>
+  <a href="https://maribacelo.github.io/"><img src="https://img.shields.io/badge/🌐_Live_site-maribacelo.github.io/maribacelo-BC452D?style=for-the-badge" alt="Live site" /></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/🚀_Quick_start-0B1F3A?style=for-the-badge" alt="Quick start" /></a>
   <a href="#project-layout"><img src="https://img.shields.io/badge/📁_Layout-0B1F3A?style=for-the-badge" alt="Layout" /></a>
   <a href="#architecture"><img src="https://img.shields.io/badge/🏗️_Architecture-0B1F3A?style=for-the-badge" alt="Architecture" /></a>
@@ -58,7 +58,7 @@
 
 ## Product in one glance
 
-Personal portfolio for **Mariana Bacelo**, Senior Service Designer. It presents selected work, experience and contact paths as a **static site** hosted on [GitHub Pages](https://maribacelo.github.io/maribacelo/).
+Personal portfolio for **Mariana Bacelo**, Senior Service Designer. It presents selected work, experience and contact paths as a **static site** hosted on [GitHub Pages](https://maribacelo.github.io/).
 
 Built for the next developer to extend without fighting a one-off HTML dump:
 
@@ -219,7 +219,7 @@ Configured in [`astro.config.mjs`](./astro.config.mjs):
 | Option | Value | Notes |
 |---|---|---|
 | `site` | `https://maribacelo.github.io` | GitHub Pages host |
-| `base` | `/maribacelo` | Project site URL prefix |
+| `base` | `/` | User site URL prefix |
 | `output` | `static` | Pure SSG |
 | `trailingSlash` | `always` | Stable directory URLs |
 
@@ -272,7 +272,7 @@ Breakpoints follow Tailwind defaults: `sm 640` · `md 768` · `lg 1024` · `xl 1
 
 Portfolio content © Mariana Bacelo. Source structure is provided for deployment and maintenance of this site.
 
-- Site: [maribacelo.github.io/maribacelo](https://maribacelo.github.io/maribacelo/)
+- Site: [maribacelo.github.io/maribacelo](https://maribacelo.github.io/)
 - Email: [marianabacelo00@gmail.com](mailto:marianabacelo00@gmail.com)
 - LinkedIn: [mariana-bacelo](https://www.linkedin.com/in/mariana-bacelo/)
 
@@ -280,3 +280,7 @@ Portfolio content © Mariana Bacelo. Source structure is provided for deployment
   <a href="README.md"><img src="https://img.shields.io/badge/EN--US-ACTIVE-0052CC?style=for-the-badge&logo=googletranslate&logoColor=white" alt="EN-US active" /></a>
   <a href="#para-o-próximo-dev-pt-br"><img src="https://img.shields.io/badge/PT--BR-Resumo-2E7D32?style=for-the-badge&logo=googletranslate&logoColor=white" alt="PT-BR summary" /></a>
 </p>
+
+## Restricted case material
+
+Customer Service Strategy and Logistics Business Alignment are request-access teasers. Their full case pages, presentation media and cover images are omitted from the current public source and build. The protected service is separate and has not been activated here. Earlier public commits may still contain those materials; this change does not rewrite repository history.
